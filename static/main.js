@@ -119,7 +119,7 @@ document.getElementById('searchForm').addEventListener('submit', async (e) => {
     if (searchTimeout) clearTimeout(searchTimeout);
     searchTimeout = setTimeout(showLongSearchMessage, 5000);
     try {
-        const response = await fetch('/search', {
+        const response = await fetch('https://mattang-server-595332420442.asia-northeast3.run.app/search', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
