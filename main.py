@@ -425,10 +425,11 @@ def search():
 server_thread = None
 server_running = False
 
+# 기존 if __name__ == "__main__": 블록 삭제
+# run_server() 함수 수정
 def run_server():
-    global server_running
-    server_running = True
-    app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port, debug=False, use_reloader=False)
 
 def stop_server():
     global server_running
@@ -439,8 +440,7 @@ def stop_server():
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
 
-if __name__ == '__main__':
-    # PC에서 실행할 때는 자동으로 브라우저 열기
-    if not os.environ.get('ANDROID_DATA'):
-        threading.Thread(target=lambda: webbrowser.open('http://localhost:5000')).start()
-    run_server()
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
