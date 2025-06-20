@@ -1,8 +1,10 @@
 /* ===== 전체 배경 및 폰트 ===== */
 body {
-    font-family: 'Pretendard', 'Noto Sans KR', Arial, sans-serif;
-    background: linear-gradient(135deg, #e0e7ef 0%, #f8fafc 100%); /* 산뜻한 파스텔 그라데이션 */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* ===== 메인 카드(전체 컨테이너) ===== */
@@ -314,16 +316,23 @@ body {
     margin: 2rem 0;
 }
 .mz-spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #e0e7ef;
-    border-top: 4px solid #00e6c3;
-    border-radius: 50%;
-    animation: mz-spin 1s linear infinite;
+    width: 240px;
+    height: 240px;
+    background: none;
+    border: none;
+    animation: none;
+    position: relative;
+    display: block;
 }
-@keyframes mz-spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.mz-spinner::after {
+    content: '';
+    display: block;
+    width: 240px;
+    height: 240px;
+    background: url('mattang.gif') center center/contain no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .mz-card-list {
     display: grid;
@@ -333,23 +342,26 @@ body {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
+    align-items: stretch;
 }
 .mz-card {
     background: #fff;
     border-radius: 1.5rem;
     box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
-    min-width: 290px;
-    max-width: 340px;
+    padding: 1.5rem;
+    min-width: 340px !important;
+    max-width: 340px !important;
+    width: 340px !important;
+    min-height: 420px;
     flex: 1 1 320px;
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    justify-content: space-between;
+    gap: 0.7rem;
     position: relative;
     transition: box-shadow 0.18s, transform 0.13s;
     border: 1.5px solid #e0e7ef;
     animation: mz-card-in 0.5s cubic-bezier(.68,-0.55,.27,1.55);
-    min-height: 420px;
 }
 @keyframes mz-card-in {
     0% { opacity: 0; transform: translateY(30px) scale(0.95); }
@@ -383,10 +395,8 @@ body {
 }
 .mz-info-row {
     display: flex;
-    align-items: center;
-    gap: 0.7em;
-    font-size: 1.05em;
-    color: #444;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 .mz-info-icon {
     color: #00e6c3;
@@ -405,46 +415,38 @@ body {
     margin-right: 0.5em;
 }
 .mz-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3em;
-    background: #00e6c3;
-    color: #fff;
-    font-weight: 800;
-    border-radius: 1em;
-    padding: 0.4em 1.1em;
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    background-color: #00c73c;
+    color: white;
+    text-align: center;
     text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
     margin-top: auto;
-    box-shadow: 0 2px 8px 0 #00e6c3;
-    transition: background 0.15s, color 0.15s, box-shadow 0.15s;
-    font-size: 1.05em;
-}
-.mz-link:hover {
-    background: #3b82f6;
-    color: #fff;
-    box-shadow: 0 4px 16px 0 #3b82f6;
-    text-decoration: none;
 }
 .mz-hours {
     color: #ff6bcb;
     font-weight: 600;
     font-size: 0.98em;
+    margin-bottom: 0.3rem;
 }
 .mz-addr {
     color: #232526;
     font-size: 0.98em;
     font-weight: 500;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.3rem;
 }
-.mz-photo {
-    width: 100%;
-    height: 180px;
+.mz-photo, .restaurant-photo, .ad-photo {
+    width: 90%;
+    height: 120px;
     object-fit: cover;
     border-radius: 1.1rem;
-    margin-bottom: 0.7rem;
     box-shadow: 0 2px 12px 0 #e0e7ef;
     background: #f1f5f9;
     display: block;
+    margin: 0 auto 0.7rem auto;
 }
 @media (max-width: 900px) {
     .mz-photo {
@@ -453,9 +455,39 @@ body {
     }
 }
 @media (max-width: 600px) {
+    .mz-card-list {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .mz-card {
+        min-width: 88vw;
+        max-width: 92vw;
+        padding: 1.1rem 0.5rem 1rem 0.5rem;
+        border-radius: 1rem;
+        font-size: 0.97em;
+    }
+    .mz-card-title {
+        font-size: 1.05rem;
+    }
+    .mz-info-row,
+    .mz-addr,
+    .mz-hours,
+    .mz-distance {
+        font-size: 0.95em;
+    }
+    .mz-badge {
+        font-size: 0.9em;
+        padding: 0.4em 1em;
+        top: -12px;
+        left: 0.7rem;
+    }
     .mz-photo {
-        height: 110px;
-        border-radius: 0.6rem;
+        height: 90px;
+        border-radius: 0.5rem;
+    }
+    .mz-container {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 @media (max-width: 900px) {
@@ -519,5 +551,420 @@ body {
     color: #06b6d4;
     font-weight: 700;
     font-size: 1.05em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.3rem;
+}
+
+/* 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 헤더 스타일 */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.app-subtitle {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 검색 섹션 */
+.search-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #4CAF50;
+}
+
+.search-button {
+    padding: 15px 25px;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.search-button:active {
+    transform: translateY(0);
+}
+
+.location-info {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 로딩 스타일 */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 결과 컨테이너 */
+.results-container {
+    flex: 1;
+    padding: 10px;
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* 카드 스타일 */
+.card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
+    padding: 1.5rem;
+    min-width: 340px !important;
+    max-width: 340px !important;
+    width: 340px !important;
+    min-height: 420px;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.7rem;
+    position: relative;
+    transition: box-shadow 0.18s, transform 0.13s;
+    border: 1.5px solid #e0e7ef;
+    animation: mz-card-in 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.card:hover {
+    box-shadow: 0 8px 32px 0 #00e6c3;
+    transform: translateY(-6px) scale(1.03);
+}
+.card-header, .card-body, .card-footer {
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.platform-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.platform-badge.kakao {
+    background: #FEE500;
+    color: #3C1E1E;
+}
+.platform-badge.google {
+    background: #4285F4;
+    color: white;
+}
+.platform-badge.naver {
+    background: #03C75A;
+    color: white;
+}
+.platform-badge.mangoplate {
+    background: #FF6B35;
+    color: white;
+}
+.restaurant-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+.restaurant-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 0;
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #666;
+}
+.info-item.rating {
+    color: #FF6B35;
+    font-weight: bold;
+}
+.info-item.review {
+    color: #4CAF50;
+}
+.address {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+.distance {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+.hours {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+.go-button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: auto;
+}
+.go-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+.go-button:active {
+    transform: translateY(0);
+}
+
+/* 푸터 */
+.footer {
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .app-title {
+        font-size: 1.5rem;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-button {
+        width: 100%;
+    }
+    
+    .card-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .card {
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+    }
+    
+    .search-section {
+        margin: 5px;
+        padding: 15px;
+    }
+    
+    .card-header,
+    .card-body,
+    .card-footer {
+        padding: 15px;
+    }
+}
+
+/* 안드로이드 앱 최적화 */
+@media (display-mode: standalone) {
+    .header {
+        padding-top: 30px;
+    }
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: #ecf0f1;
+    }
+    
+    .header,
+    .search-section,
+    .loading-container,
+    .footer {
+        background: rgba(44, 62, 80, 0.95);
+        color: #ecf0f1;
+    }
+    
+    .card {
+        background: #34495e;
+        color: #ecf0f1;
+    }
+    
+    .search-input {
+        background: #2c3e50;
+        color: #ecf0f1;
+        border-color: #34495e;
+    }
+    
+    .search-input:focus {
+        border-color: #4CAF50;
+    }
+}
+
+/* 플로팅 언어 전환 버튼 */
+.lang-fab {
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.lang-btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 2em;
+    padding: 0.4em 1em;
+    font-size: 0.95em;
+    font-weight: 700;
+    box-shadow: 0 2px 8px 0 #3b82f6;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    cursor: pointer;
+    outline: none;
+}
+.lang-btn:hover, .lang-btn.active {
+    background: #00e6c3;
+    color: #fff;
+    box-shadow: 0 4px 16px 0 #00e6c3;
+    transform: scale(1.08);
+}
+@media (max-width: 600px) {
+    .lang-fab {
+        right: 8px;
+        bottom: 10px;
+        gap: 5px;
+    }
+    .lang-btn {
+        font-size: 0.85em;
+        padding: 0.3em 0.8em;
+    }
+}
+
+.loading-img {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px auto;
+    animation: loading-bounce 1.2s infinite ease-in-out;
+}
+@keyframes loading-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px) scale(1.05); }
+}
+
+.restaurant-photo {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 1.1rem;
+    box-shadow: 0 2px 12px 0 #e0e7ef;
+    background: #f1f5f9;
+    display: block;
 } 

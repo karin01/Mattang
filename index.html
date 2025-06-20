@@ -12,8 +12,6 @@
 <body>
     <div class="mz-bg">
         <div class="mz-container">
-            <button id="kor-toggle" class="mz-lang-btn" style="position:absolute;top:24px;right:92px;z-index:10;">Kor</button>
-            <button id="eng-toggle" class="mz-lang-btn" style="position:absolute;top:24px;right:32px;z-index:10;">Eng</button>
             <h1 class="mz-title">맛집 통합 검색</h1>
             <p class="mz-subtitle">요즘 핫한 곳, 한 번에 찾기</p>
             <form id="searchForm" class="mz-search-form">
@@ -26,6 +24,10 @@
             </div>
             <div id="mz-results" class="mz-card-list"></div>
         </div>
+    </div>
+    <div class="lang-fab">
+        <button id="korBtn" class="lang-btn">Kor</button>
+        <button id="engBtn" class="lang-btn">Eng</button>
     </div>
     <script src="/static/main.js"></script>
 </body>
