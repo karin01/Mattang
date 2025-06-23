@@ -1,0 +1,970 @@
+/* ===== 전체 배경 및 폰트 ===== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== 메인 카드(전체 컨테이너) ===== */
+.main-card {
+    background: #fff;
+    border-radius: 32px; /* 더 둥글고 부드러운 카드 */
+    box-shadow: 0 8px 32px 0 rgba(120, 120, 200, 0.13); /* 입체감 강조 */
+    padding: 3rem 2.5rem 2.5rem 2.5rem;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    max-width: 1200px;
+    width: 92vw;
+    transition: box-shadow 0.2s;
+}
+.main-card:hover {
+    box-shadow: 0 12px 40px 0 rgba(120, 120, 200, 0.18); /* 호버시 더 진한 그림자 */
+}
+
+/* ===== 타이틀 ===== */
+.main-title {
+    font-weight: 800;
+    font-size: 2.5rem;
+    letter-spacing: -1.5px;
+    margin-bottom: 2.2rem;
+    color: #3a3a5a;
+    text-shadow: 0 2px 8px #e0e7ef; /* 은은한 그림자 */
+}
+
+/* ===== 검색 폼(입력창+버튼) ===== */
+.search-form {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+}
+.search-input {
+    flex: 1;
+    border-radius: 18px;
+    border: 1.5px solid #d1d5db;
+    padding: 1.1rem 1.5rem;
+    font-size: 1.15rem;
+    background: #f6f8fa;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(120, 120, 200, 0.06);
+}
+.search-input:focus {
+    border: 2px solid #a084ee; /* 포커스시 보라색 강조 */
+    outline: none;
+    background: #fff;
+    box-shadow: 0 4px 16px 0 rgba(160, 132, 238, 0.13);
+}
+.search-btn {
+    border-radius: 18px;
+    padding: 1.1rem 2.1rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #a084ee 0%, #67e8f9 100%); /* 보라-민트 그라데이션 */
+    color: #fff;
+    border: none;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    box-shadow: 0 2px 12px 0 rgba(160, 132, 238, 0.10);
+    letter-spacing: 1px;
+}
+.search-btn:hover, .search-btn:focus {
+    background: linear-gradient(90deg, #67e8f9 0%, #a084ee 100%);
+    box-shadow: 0 6px 20px 0 rgba(160, 132, 238, 0.18);
+    transform: translateY(-2px) scale(1.03); /* 버튼 눌림 효과 */
+}
+
+/* ===== 로딩 스피너 ===== */
+.loading {
+    display: none;
+    text-align: center;
+    margin: 30px 0 10px 0;
+}
+
+/* ===== 테이블 컨테이너(가로 스크롤) ===== */
+.table-container {
+    margin-top: 2.5rem;
+    overflow-x: auto;
+}
+
+/* ===== 테이블 전체 ===== */
+.table {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 12px 0 rgba(120, 120, 200, 0.08);
+    min-width: 800px;
+}
+.table th, .table td {
+    vertical-align: middle;
+    font-size: 1.08rem;
+    border: none;
+}
+
+/* ===== 테이블 헤더 ===== */
+.table th {
+    background: linear-gradient(90deg, #e0e7ef 0%, #f3e8ff 100%); /* 연보라-회색 그라데이션 */
+    color: #a084ee;
+    font-weight: 800;
+    border-bottom: 2.5px solid #e0e7ef;
+    letter-spacing: 0.5px;
+}
+
+/* ===== 테이블 줄무늬 ===== */
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    background: #f8fafc;
+}
+
+/* ===== 테이블 링크(바로가기) ===== */
+.table a {
+    color: #a084ee;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 4px 14px;
+    transition: background 0.15s, color 0.15s;
+}
+.table a:hover {
+    background: #e0e7ef;
+    color: #3a3a5a;
+}
+
+/* ===== 테이블 칼럼별 폭 ===== */
+.table th.platform-col, .table td.platform-col {
+    min-width: 90px;
+    width: 110px;
+}
+.table th.rating-col, .table td.rating-col {
+    min-width: 32px;
+    width: 48px;
+}
+.table th.link-col, .table td.link-col {
+    min-width: 90px;
+    width: 110px;
+}
+.table th:nth-child(4), .table td:nth-child(4) {
+    white-space: nowrap;
+    min-width: 160px;
+    width: 180px;
+}
+.table th:nth-child(2), .table td:nth-child(2) {
+    min-width: 150px;
+    width: 220px;
+}
+
+/* ===== 테이블 행 hover ===== */
+.table tbody tr:hover {
+    background: #e0e7ef;
+    transition: background 0.15s;
+}
+
+/* ===== 플랫폼 뱃지(카카오/네이버/구글) ===== */
+.badge-platform {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 12px;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 2px;
+    white-space: nowrap;
+    line-height: 1.2;
+    vertical-align: middle;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 2px 8px 0 rgba(160, 132, 238, 0.10);
+    letter-spacing: 0.5px;
+}
+.badge-kakao { background: #ffe066; color: #3c1e1e; min-width: 72px; padding: 6px 22px; font-size: 1.05em; }
+.badge-naver { background: #5eead4; color: #065f46; }
+.badge-google { background: #a5b4fc; color: #312e81; }
+
+/* ===== 평점 강조 색상 ===== */
+.rating-high { color: #06b6d4; font-weight: 800; }
+.rating-mid { color: #a084ee; }
+.rating-low { color: #9ca3af; }
+
+/* ===== 테이블 헤더 고정 ===== */
+.table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* ===== 로딩시 흐림 효과 ===== */
+.loading-active {
+    filter: blur(2px) grayscale(0.2) opacity(0.7);
+    pointer-events: none;
+}
+
+/* ===== 안내 메시지(결과 없음 등) ===== */
+.alert-message {
+    background: #f1f5f9;
+    color: #334155;
+    border-radius: 16px;
+    padding: 1.2em 1em;
+    text-align: center;
+    font-size: 1.1em;
+    margin-top: 1.5em;
+    box-shadow: 0 2px 8px 0 rgba(160, 132, 238, 0.10);
+}
+
+/* ===== 반응형(태블릿/모바일) ===== */
+@media (max-width: 1200px) {
+    .main-card {
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+        margin-top: 20px;
+    }
+    .main-title {
+        font-size: 1.5rem;
+    }
+    .table th, .table td {
+        font-size: 0.97rem;
+    }
+}
+@media (max-width: 768px) {
+    .main-card {
+        max-width: 100vw;
+        padding: 0.7rem 0.2rem 1rem 0.2rem;
+    }
+    .table {
+        min-width: 600px;
+    }
+}
+
+/* ===== MZ 감성 카드형 UI (사진+뱃지+카드+플렉스+반응형) ===== */
+.mz-bg {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #f8fafc 0%, #f1f5f9 100%);
+}
+.mz-container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mz-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+    color: #232526;
+    text-shadow: 0 2px 8px #e0e7ef;
+}
+.mz-subtitle {
+    font-size: 1.2rem;
+    color: #3b82f6;
+    margin-bottom: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.mz-search-form {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    background: #fff;
+    border-radius: 2rem;
+    box-shadow: 0 2px 16px 0 rgba(59,130,246,0.07);
+    padding: 0.3rem 0.5rem;
+    align-items: center;
+    border: 1.5px solid #e0e7ef;
+}
+.mz-search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    padding: 1rem 1.2rem;
+    border-radius: 2rem;
+    outline: none;
+    color: #232526;
+}
+.mz-search-input::placeholder {
+    color: #bdbdfc;
+    font-weight: 400;
+}
+.mz-search-btn {
+    background: #00e6c3;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-left: 0.5rem;
+    box-shadow: 0 2px 12px 0 #00e6c3;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    cursor: pointer;
+}
+.mz-search-btn:hover, .mz-search-btn:focus {
+    background: #3b82f6;
+    box-shadow: 0 6px 20px 0 #3b82f6;
+    transform: scale(1.08);
+}
+.mz-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+.mz-spinner {
+    width: 240px;
+    height: 240px;
+    background: none;
+    border: none;
+    animation: none;
+    position: relative;
+    display: block;
+}
+.mz-spinner::after {
+    content: '';
+    display: block;
+    width: 240px;
+    height: 240px;
+    background: url('mattang.gif') center center/contain no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.mz-card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    align-items: stretch;
+}
+.mz-card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
+    padding: 1.5rem;
+    min-width: 340px !important;
+    max-width: 340px !important;
+    width: 340px !important;
+    min-height: 420px;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.7rem;
+    position: relative;
+    transition: box-shadow 0.18s, transform 0.13s;
+    border: 1.5px solid #e0e7ef;
+    animation: mz-card-in 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes mz-card-in {
+    0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.mz-card:hover {
+    box-shadow: 0 8px 32px 0 #00e6c3;
+    transform: translateY(-6px) scale(1.03);
+}
+.mz-badge {
+    position: absolute;
+    top: -18px;
+    left: 1.5rem;
+    background: #3b82f6;
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.05em;
+    padding: 0.5em 1.2em;
+    border-radius: 1.2em;
+    box-shadow: 0 2px 8px 0 #3b82f6;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    user-select: none;
+}
+.mz-card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #232526;
+    margin-bottom: 0.2em;
+    letter-spacing: -0.5px;
+}
+.mz-info-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+.mz-info-icon {
+    color: #00e6c3;
+    margin-right: 0.3em;
+    font-size: 1.1em;
+}
+.mz-rating {
+    font-weight: 900;
+    color: #00e6c3;
+    margin-right: 0.5em;
+    font-size: 1.1em;
+}
+.mz-review {
+    color: #3b82f6;
+    font-weight: 700;
+    margin-right: 0.5em;
+}
+.mz-link {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    background-color: #00c73c;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: auto;
+}
+.mz-hours {
+    color: #ff6bcb;
+    font-weight: 600;
+    font-size: 0.98em;
+    margin-bottom: 0.3rem;
+}
+.mz-addr {
+    color: #232526;
+    font-size: 0.98em;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+.mz-photo, .restaurant-photo, .ad-photo {
+    width: 90%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 1.1rem;
+    box-shadow: 0 2px 12px 0 #e0e7ef;
+    background: #f1f5f9;
+    display: block;
+    margin: 0 auto 0.7rem auto;
+}
+@media (max-width: 900px) {
+    .mz-photo {
+        height: 140px;
+        border-radius: 0.8rem;
+    }
+}
+@media (max-width: 600px) {
+    .mz-card-list {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .mz-card {
+        min-width: 88vw;
+        max-width: 92vw;
+        padding: 1.1rem 0.5rem 1rem 0.5rem;
+        border-radius: 1rem;
+        font-size: 0.97em;
+    }
+    .mz-card-title {
+        font-size: 1.05rem;
+    }
+    .mz-info-row,
+    .mz-addr,
+    .mz-hours,
+    .mz-distance {
+        font-size: 0.95em;
+    }
+    .mz-badge {
+        font-size: 0.9em;
+        padding: 0.4em 1em;
+        top: -12px;
+        left: 0.7rem;
+    }
+    .mz-photo {
+        height: 90px;
+        border-radius: 0.5rem;
+    }
+    .mz-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+@media (max-width: 900px) {
+    .mz-container {
+        max-width: 98vw;
+        padding: 30px 0 20px 0;
+    }
+    .mz-card-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+    .mz-card {
+        min-width: 0;
+        max-width: 98vw;
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    }
+}
+@media (max-width: 600px) {
+    .mz-title {
+        font-size: 1.5rem;
+    }
+    .mz-search-form {
+        max-width: 98vw;
+        padding: 0.1rem 0.1rem;
+    }
+    .mz-card-list {
+        grid-template-columns: 1fr;
+    }
+    .mz-card {
+        min-width: 98vw;
+        max-width: 99vw;
+        padding: 1rem 0.3rem 1rem 0.3rem;
+    }
+}
+.mz-lang-btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 1.5em;
+    padding: 0.5em 1.2em;
+    font-size: 1.05em;
+    font-weight: 700;
+    box-shadow: 0 2px 8px 0 #3b82f6;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    cursor: pointer;
+}
+.mz-lang-btn:hover, .mz-lang-btn:focus {
+    background: #00e6c3;
+    color: #fff;
+    box-shadow: 0 4px 16px 0 #00e6c3;
+    transform: scale(1.08);
+}
+.mz-lang-btn.active {
+    background: #00e6c3;
+    color: #fff;
+    border: 2px solid #3b82f6;
+    font-weight: 900;
+    box-shadow: 0 4px 16px 0 #00e6c3;
+}
+.mz-distance {
+    color: #06b6d4;
+    font-weight: 700;
+    font-size: 1.05em;
+    margin-bottom: 0.3rem;
+}
+
+/* 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 헤더 스타일 */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.app-subtitle {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 검색 섹션 */
+.search-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #4CAF50;
+}
+
+.search-button {
+    padding: 15px 25px;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.search-button:active {
+    transform: translateY(0);
+}
+
+.location-info {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 로딩 스타일 */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 결과 컨테이너 */
+.results-container {
+    flex: 1;
+    padding: 10px;
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* 카드 스타일 */
+.card {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(59,130,246,0.10);
+    padding: 1.5rem;
+    min-width: 340px !important;
+    max-width: 340px !important;
+    width: 340px !important;
+    min-height: 420px;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.7rem;
+    position: relative;
+    transition: box-shadow 0.18s, transform 0.13s;
+    border: 1.5px solid #e0e7ef;
+    animation: mz-card-in 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.card:hover {
+    box-shadow: 0 8px 32px 0 #00e6c3;
+    transform: translateY(-6px) scale(1.03);
+}
+.card-header, .card-body, .card-footer {
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+.platform-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.platform-badge.kakao {
+    background: #FEE500;
+    color: #3C1E1E;
+}
+.platform-badge.google {
+    background: #4285F4;
+    color: white;
+}
+.platform-badge.naver {
+    background: #03C75A;
+    color: white;
+}
+.platform-badge.mangoplate {
+    background: #FF6B35;
+    color: white;
+}
+.restaurant-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+.restaurant-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 0;
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #666;
+}
+.info-item.rating {
+    color: #FF6B35;
+    font-weight: bold;
+}
+.info-item.review {
+    color: #4CAF50;
+}
+.address {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+.distance {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+.hours {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+.go-button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: auto;
+}
+.go-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+.go-button:active {
+    transform: translateY(0);
+}
+
+/* 푸터 */
+.footer {
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .app-title {
+        font-size: 1.5rem;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-button {
+        width: 100%;
+    }
+    
+    .card-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .card {
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+    }
+    
+    .search-section {
+        margin: 5px;
+        padding: 15px;
+    }
+    
+    .card-header,
+    .card-body,
+    .card-footer {
+        padding: 15px;
+    }
+}
+
+/* 안드로이드 앱 최적화 */
+@media (display-mode: standalone) {
+    .header {
+        padding-top: 30px;
+    }
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: #ecf0f1;
+    }
+    
+    .header,
+    .search-section,
+    .loading-container,
+    .footer {
+        background: rgba(44, 62, 80, 0.95);
+        color: #ecf0f1;
+    }
+    
+    .card {
+        background: #34495e;
+        color: #ecf0f1;
+    }
+    
+    .search-input {
+        background: #2c3e50;
+        color: #ecf0f1;
+        border-color: #34495e;
+    }
+    
+    .search-input:focus {
+        border-color: #4CAF50;
+    }
+}
+
+/* 플로팅 언어 전환 버튼 */
+.lang-fab {
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.lang-btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 2em;
+    padding: 0.4em 1em;
+    font-size: 0.95em;
+    font-weight: 700;
+    box-shadow: 0 2px 8px 0 #3b82f6;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    cursor: pointer;
+    outline: none;
+}
+.lang-btn:hover, .lang-btn.active {
+    background: #00e6c3;
+    color: #fff;
+    box-shadow: 0 4px 16px 0 #00e6c3;
+    transform: scale(1.08);
+}
+@media (max-width: 600px) {
+    .lang-fab {
+        right: 8px;
+        bottom: 10px;
+        gap: 5px;
+    }
+    .lang-btn {
+        font-size: 0.85em;
+        padding: 0.3em 0.8em;
+    }
+}
+
+.loading-img {
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px auto;
+    animation: loading-bounce 1.2s infinite ease-in-out;
+}
+@keyframes loading-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px) scale(1.05); }
+}
+
+.restaurant-photo {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 1.1rem;
+    box-shadow: 0 2px 12px 0 #e0e7ef;
+    background: #f1f5f9;
+    display: block;
+} 

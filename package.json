@@ -1,0 +1,32 @@
+{
+  "name": "mattang-app",
+  "version": "1.0.0",
+  "description": "맛집 검색 앱",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:web && npm run sync:android",
+    "build:web": "echo 'Web build completed'",
+    "sync:android": "npx cap sync android",
+    "open:android": "npx cap open android",
+    "run:android": "npx cap run android",
+    "build:android": "npx cap build android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/geolocation": "^5.0.0",
+    "@capacitor/network": "^5.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.0.0"
+  },
+  "keywords": [
+    "restaurant",
+    "search",
+    "food",
+    "kakao",
+    "google"
+  ],
+  "author": "Mattang Team",
+  "license": "MIT"
+} 

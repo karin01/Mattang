@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맛집 정보 통합 검색</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7b2e1e2e2b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="mz-bg">
+        <div class="mz-container">
+            <h1 class="mz-title">맛집 통합 검색</h1>
+            <p class="mz-subtitle">요즘 핫한 곳, 한 번에 찾기</p>
+            <form id="searchForm" class="mz-search-form">
+                <input type="text" class="mz-search-input" id="query" placeholder="지역, 음식, 키워드로 검색 (예: 성수 파스타)" autofocus>
+                <button type="submit" class="mz-search-btn"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="mz-loading" style="display:none;">
+                <div class="mz-spinner"></div>
+                <p>검색 중...</p>
+            </div>
+            <div id="mz-results" class="mz-card-list"></div>
+        </div>
+    </div>
+    <div class="lang-fab">
+        <button id="korBtn" class="lang-btn">Kor</button>
+        <button id="engBtn" class="lang-btn">Eng</button>
+    </div>
+    <script src="/static/main.js"></script>
+</body>
+</html> 
